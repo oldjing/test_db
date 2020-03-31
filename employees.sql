@@ -28,12 +28,12 @@ USE employees;
 
 SELECT 'CREATING DATABASE STRUCTURE' as 'INFO';
 
-DROP TABLE IF EXISTS dept_emp,
-                     dept_manager,
-                     titles,
-                     salaries, 
-                     employees, 
-                     departments;
+DROP TABLE IF EXISTS dept_emp,  # 部门雇员表
+                     dept_manager, # 部门经理表
+                     titles,    # 称号表
+                     salaries,  # 薪资表
+                     employees, # 雇员表
+                     departments;  # 部门表
 
 /*!50503 set default_storage_engine = InnoDB */;
 /*!50503 select CONCAT('storage engine: ', @@default_storage_engine) as INFO */;
@@ -61,7 +61,7 @@ CREATE TABLE dept_manager (
    from_date    DATE            NOT NULL,
    to_date      DATE            NOT NULL,
    FOREIGN KEY (emp_no)  REFERENCES employees (emp_no)    ON DELETE CASCADE,
-   FOREIGN KEY (dept_no) REFERENCES departments (dept_no) ON DELETE CASCADE,
+   FOREIGN KEY (dept_no) REFERENCES departments (dept_no) ON DELETE CASCADE,  # ON DELETE CASCADE 表示当父表删除时，子表也级联删除  REFERENCES，对象权限。 建立外键关系权限。
    PRIMARY KEY (emp_no,dept_no)
 ); 
 
